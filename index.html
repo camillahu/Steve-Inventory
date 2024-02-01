@@ -26,7 +26,7 @@
             flex-direction: grid;
             margin: 40px;
             padding: 40px;
-            display: none;  /*ikke kødd med denne linja*/
+            display: none;
             
         }
         
@@ -54,8 +54,7 @@
             top: 470px;
             left: 110px;
             scale: 160%;
-            display:flex;
-            
+            display: flex;
         }
         .button {
             scale: 130%;
@@ -115,6 +114,9 @@
 
 
 <script>
+
+let inventoryVisible = false;
+
     
     function showInventory() {
     /*Navn på funksjonen er "showInventory*/
@@ -128,13 +130,16 @@
     let characterSteve = document.getElementById("Steve2");
     
 
-    if (inventoryBlob.style.display  == "none")
+    if (!inventoryVisible) {
+    
+    (inventoryBlob.style.display  == "none")
     /* "==" sin jobb er å sammenligne informasjon på høyre og venstre side av "==" tegnene og sjekke om det er likt/riktig.  (true/false)*/
 
     /*HVIS informasjonen ER lik på begge sider (true) så skal det som står inne i "{ }" tegnene bli utført*/ 
-    { inventoryBlob.style.display = "flex";
+     inventoryBlob.style.display = "flex";
       button.innerText = "Close Inventory▶️";
       characterSteve.style.display ="none";
+      inventoryVisible = true;
     }  
     
     /*Hvis informasjonen på begge siden av "==" tegnene IKKE er lik så skal det som står inne i { } tegnene  "else" bli urført*/
@@ -142,6 +147,7 @@
         inventoryBlob.style.display = "none";
         button.innerText = "Open Inventory▶️";
         characterSteve.style.display ="flex";
+        inventoryVisible = false;
     }
     }
 </script>
